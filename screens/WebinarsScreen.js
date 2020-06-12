@@ -17,8 +17,6 @@ const WebinarsScreen = ({ navigation }) => {
           onClickWebinar={() => navigation.push('Webinar', { name: 'Webinar', webinar: item })}
         />
       )} />
-      <Text>All Webinars Page</Text>
-      <Button title='Click on a webianr' onPress={() => navigation.push('Webinar', { name: 'Webinar' })} />
     </ScreenContainer>
   )
 }
@@ -30,7 +28,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   flatList: {
-    width: '90%'
+    width: '100%'
   },
   button: {
     paddingHorizontal: 20,
