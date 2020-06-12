@@ -1,11 +1,19 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TouchableNativeFeedback, Platform } from 'react-native'
 
-const WebinarCard = ({ webinar }) => {
+const WebinarCard = ({ webinar, onClickWebinar }) => {
+  let TouchableComponent = TouchableOpacity
+
+  if (Platform.OS === 'android' && Platform.Version >= 21) {
+    TouchableComponent = TouchableNativeFeedback
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>{webinar.title}</Text>
-    </View>
+    <TouchableComponent onPress={onClickWebinar}>
+      <View style={styles.container}>
+        <Text>{webinar.title}</Text>
+      </View>
+    </TouchableComponent>
   )
 }
 

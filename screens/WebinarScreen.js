@@ -5,10 +5,11 @@ const ScreenContainer = ({ children }) => (
   <View style={styles.container}>{children}</View>
 )
 
-const WebinarScreen = () => {
+const WebinarScreen = props => {
+  const { webinar } = props.route.params
   return (
     <ScreenContainer>
-      <Text>All Webinars Page</Text>
+      <Text>{webinar.title}</Text>
     </ScreenContainer>
   )
 }

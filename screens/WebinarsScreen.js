@@ -11,8 +11,11 @@ const ScreenContainer = ({ children }) => (
 const WebinarsScreen = ({ navigation }) => {
   return (
     <ScreenContainer>
-      <FlatList keyExtractor={item => item._id} data={mockWebinars} renderItem={({ item }) => (
-        <WebinarCard webinar={item} />
+      <FlatList style={styles.flatList} keyExtractor={item => item._id} data={mockWebinars} renderItem={({ item }) => (
+        <WebinarCard
+          webinar={item}
+          onClickWebinar={() => navigation.push('Webinar', { name: 'Webinar', webinar: item })}
+        />
       )} />
       <Text>All Webinars Page</Text>
       <Button title='Click on a webianr' onPress={() => navigation.push('Webinar', { name: 'Webinar' })} />
@@ -22,10 +25,12 @@ const WebinarsScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  flatList: {
+    width: '90%'
   },
   button: {
     paddingHorizontal: 20,
