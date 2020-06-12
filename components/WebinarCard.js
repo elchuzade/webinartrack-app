@@ -20,7 +20,7 @@ const WebinarCard = ({ webinar, onClickWebinar }) => {
           <Image
             style={styles.webinarCardImage}
             // source={{ uri: webinar.avatar.location }}
-            source={{ uri: webinar.croppedAvatar.location }}
+            source={{ uri: webinar.croppedAvatar && webinar.croppedAvatar.location || 'https://picsum.photos/400/300' }}
           />
           <View style={styles.webinarDetails}>
             <View style={styles.webinarDetail}>

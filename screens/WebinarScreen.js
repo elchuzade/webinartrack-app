@@ -1,6 +1,7 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-
+import React, { useEffect } from 'react'
+import { View, StyleSheet } from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
+import { getWebinar } from '../redux/actions/webinarActions'
 import Webinar from '../components/Webinar'
 
 const ScreenContainer = ({ children }) => (
@@ -8,7 +9,14 @@ const ScreenContainer = ({ children }) => (
 )
 
 const WebinarScreen = props => {
+  const dispatch = useDispatch()
+
   const { webinar } = props.route.params
+
+  useEffect(() => {
+    dispatch(getWebinar(webinar._id))
+  }, [dispatch])
+
   return (
     <ScreenContainer>
       <Webinar webinar={webinar} />

@@ -1,17 +1,26 @@
-import React from 'react'
-import { View, Text, StyleSheet, Button, FlatList } from 'react-native'
-
+import React, { useState, useEffect } from 'react'
+import { View, StyleSheet, FlatList } from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
 import WebinarCard from '../components/WebinarCard'
 import mockWebinars from '../data/webinars'
+import { getPastWebinars, getUpcomingWebinars } from '../redux/actions/webinarActions'
 
 const ScreenContainer = ({ children }) => (
   <View style={styles.container}>{children}</View>
 )
 
 const WebinarsScreen = ({ navigation }) => {
+  const dispatch = useDispatch()
+
+  const pastWebinars = useSelector(state => state.webinars.pastWebinars)
+
+  useEffect(() => {
+    dispatch(getPastWebinars())
+  }, [dispatch])
+
   return (
     <ScreenContainer>
-      <FlatList style={styles.flatList} keyExtractor={item => item._id} data={mockWebinars} renderItem={({ item }) => (
+      <FlatList style={styles.flatList} keyExtractor={item => item._id} data={pastWebinars} renderItem={({ item }) => (
         <WebinarCard
           webinar={item}
           onClickWebinar={() => navigation.push('Webinar', { name: 'Webinar', webinar: item })}
