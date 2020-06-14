@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, FlatList } from 'react-native'
+import { View, StyleSheet, FlatList, Button } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import WebinarCard from '../components/WebinarCard'
 import mockWebinars from '../data/webinars'
@@ -23,7 +23,7 @@ const WebinarsScreen = ({ navigation }) => {
       <FlatList style={styles.flatList} keyExtractor={item => item._id} data={pastWebinars} renderItem={({ item }) => (
         <WebinarCard
           webinar={item}
-          onClickWebinar={() => navigation.push('Webinar', { name: 'Webinar', webinar: item })}
+          onClickWebinar={() => navigation.push('Webinar', { name: 'Webinar', id: item._id })}
         />
       )} />
     </ScreenContainer>

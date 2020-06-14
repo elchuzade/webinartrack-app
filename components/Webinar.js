@@ -4,7 +4,6 @@ import moment from 'moment'
 import { Entypo } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import webinars from '../data/webinars';
 import { Title } from 'react-native-paper';
 
 const Webinar = ({ webinar }) => {
@@ -14,7 +13,7 @@ const Webinar = ({ webinar }) => {
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={{ uri: webinar.croppedAvatar.location }}
+            source={{ uri: webinar.croppedAvatar ? webinar.croppedAvatar.location : 'https://picsum.photos/400/300' }}
           />
         </View>
         <View style={styles.titleContainer}>
