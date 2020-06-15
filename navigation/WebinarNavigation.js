@@ -1,20 +1,27 @@
 import React from 'react'
-import { Button } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
-
+import { Entypo } from '@expo/vector-icons';
 import WebinarScreen from '../screens/WebinarScreen'
 import WebinarsScreen from '../screens/WebinarsScreen'
+import HamburgerMenu from '../common/HamburgerMenu'
 
 const WebinarStack = createStackNavigator()
 
 const WebinarNavigation = ({ navigation }) => (
   <WebinarStack.Navigator>
     <WebinarStack.Screen name='Webinars' component={WebinarsScreen} options={{
-      title: 'Webinars', headerLeft: () => (
-        <Button title='Hamburger' onPress={() => navigation.toggleDrawer()} />
+      title: 'Webinars',
+      headerRight: () => (
+        <HamburgerMenu toggleMenu={navigation.toggleDrawer} />
       )
     }} />
-    <WebinarStack.Screen name='Webinar' component={WebinarScreen} options={{ title: 'Webinar' }} />
+    <WebinarStack.Screen name='Webinar' component={WebinarScreen} options={{
+      title: 'Webinar',
+      headerRight: () => (
+        <HamburgerMenu toggleMenu={navigation.toggleDrawer} />
+      )
+    }} />
   </WebinarStack.Navigator>
 )
 

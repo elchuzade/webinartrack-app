@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, FlatList, Button } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import WebinarCard from '../components/WebinarCard'
-import mockWebinars from '../data/webinars'
 import { getPastWebinars, getUpcomingWebinars } from '../redux/actions/webinarActions'
 
 const ScreenContainer = ({ children }) => (
