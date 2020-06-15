@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import ScreenContainer from '../common/ScreenContainer'
 
-import { signIn } from '../redux/actions/userActions'
+import { signIn } from '../redux/actions/authActions'
 import SignIn from '../components/SignIn'
 
 const SignInScreen = () => {
@@ -11,8 +11,9 @@ const SignInScreen = () => {
 
   const dispatch = useDispatch()
 
-  const onSignIn = useCallback((user) =>
-    dispatch(signIn(user)), [dispatch, user])
+  const onSignIn = useCallback(() => {
+    dispatch(signIn(user))
+  }, [dispatch, user])
 
   return (
     <ScreenContainer>

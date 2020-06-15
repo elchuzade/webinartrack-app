@@ -1,4 +1,5 @@
-import { SIGN_IN, SIGN_OUT, SIGN_UP } from '../actions/types'
+import { SET_CURRENT_USER, SIGN_OUT, SIGN_UP } from '../actions/types'
+import isEmpty from '../../utils/is-empty'
 
 const initialState = {
   user: null,
@@ -7,14 +8,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SIGN_IN:
+    case SET_CURRENT_USER:
       return {
         ...state,
-        user: {
-          email: 'elchuzade@gmail.com',
-          name: 'Kamran'
-        },
-        isAuthenticated: true
+        isAuthenticated: !isEmpty(action.payload),
+        user: action.payload
       }
     case SIGN_OUT:
       return {
@@ -25,10 +23,7 @@ export default (state = initialState, action) => {
     case SIGN_UP:
       return {
         ...state,
-        user: {
-          email: 'elchuzade@gmail.com',
-          name: 'Kamran'
-        },
+        user: action.payload,
         isAuthenticated: true
       }
     default:

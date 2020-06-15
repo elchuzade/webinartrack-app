@@ -7,7 +7,7 @@ const SignIn = ({ onSignIn, user, setUser }) => {
       <Text>Sign In</Text>
       <Button
         title='fill in info'
-        onPress={() => setUser({ email: 'elchuzade@gmail.com', password: '123123' })}
+        onPress={() => setUser({ email: 'elchuzade@gmail.com', password: 'Kayfarik.423' })}
       />
       <Button
         title='Submit'

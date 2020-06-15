@@ -11,7 +11,7 @@ import SignOutScreen from '../screens/SignOutScreen'
 const Drawer = createDrawerNavigator()
 
 const DrawerNavigation = () => {
-  const isAuthenticated = useSelector(state => state.user.isAuthenticated)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
   return (
     <Drawer.Navigator initialRouteName='Home'>

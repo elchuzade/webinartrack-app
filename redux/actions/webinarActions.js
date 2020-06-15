@@ -1,11 +1,11 @@
 import { GET_UPCOMING_WEBINARS, GET_PAST_WEBINARS, GET_WEBINAR } from './types'
-
+import api from '../../utils/api'
 import axios from 'axios'
 
 export const getUpcomingWebinars = () => async dispatch => {
   console.log('getting upcoming webinars')
   try {
-    const res = await axios.get('https://webinartrack.com/api/webinars/upcoming')
+    const res = await axios.get(`${api}/webinars/upcoming`)
 
     dispatch({
       type: GET_UPCOMING_WEBINARS,
@@ -19,7 +19,7 @@ export const getUpcomingWebinars = () => async dispatch => {
 export const getPastWebinars = () => async dispatch => {
   console.log('getting past webinars')
   try {
-    const res = await axios.get('https://webinartrack.com/api/webinars/past')
+    const res = await axios.get(`${api}/webinars/past`)
 
     dispatch({
       type: GET_PAST_WEBINARS,
@@ -33,7 +33,7 @@ export const getPastWebinars = () => async dispatch => {
 export const getWebinar = id => async dispatch => {
   console.log('getting single webinars')
   try {
-    const res = await axios.get(`https://webinartrack.com/api/webinars/${id}`)
+    const res = await axios.get(`${api}/webinars/${id}`)
 
     dispatch({
       type: GET_WEBINAR,

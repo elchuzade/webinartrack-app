@@ -3,7 +3,7 @@ import { Text, Button } from 'react-native'
 import ScreenContainer from '../common/ScreenContainer'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { signOut } from '../redux/actions/userActions'
+import { signOut } from '../redux/actions/authActions'
 
 export const SignOutScreen = () => {
   const dispatch = useDispatch()
