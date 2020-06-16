@@ -10,10 +10,11 @@ import RootNavigation from './navigation/RootNavigation'
 import store from './store'
 
 const App = () => {
+
   // const dispatch = useDispatch()
   // const [userToken, setUserToken] = useState('')
   // const [user, setUser] = useState({})
-  
+
   // useEffect(() => {
   //   setTimeout(() => {
   //     setIsLoading(false)
