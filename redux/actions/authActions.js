@@ -4,6 +4,8 @@ import setAuthToken from '../../utils/setAuthToken'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 
+import { setError } from './errorActions'
+
 import AsyncStorage from '@react-native-community/async-storage';
 
 export const getUserInfo = token => async dispatch => {
@@ -16,6 +18,7 @@ export const getUserInfo = token => async dispatch => {
 }
 
 export const signIn = user => async dispatch => {
+  console.log('user is - ', user)
   try {
     const res = await axios.post(`${api}/users/login`, user)
     // Setting token to local storage
@@ -31,6 +34,7 @@ export const signIn = user => async dispatch => {
     })
   } catch (err) {
     console.log('err', err.response && err.response.data)
+    err.response && dispatch(setError(err.response.data))
   }
 }
 

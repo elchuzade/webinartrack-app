@@ -3,7 +3,6 @@ import api from '../../utils/api'
 import axios from 'axios'
 
 export const getUpcomingWebinars = () => async dispatch => {
-  console.log('getting upcoming webinars')
   try {
     const res = await axios.get(`${api}/webinars/upcoming`)
 
@@ -17,7 +16,6 @@ export const getUpcomingWebinars = () => async dispatch => {
 }
 
 export const getPastWebinars = () => async dispatch => {
-  console.log('getting past webinars')
   try {
     const res = await axios.get(`${api}/webinars/past`)
 
@@ -31,7 +29,6 @@ export const getPastWebinars = () => async dispatch => {
 }
 
 export const getWebinar = id => async dispatch => {
-  console.log('getting single webinars')
   try {
     const res = await axios.get(`${api}/webinars/${id}`)
 
