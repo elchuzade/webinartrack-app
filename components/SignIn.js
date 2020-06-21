@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { View, Button, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
+import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
 import FormHeaderText from '../common/FormHeaderText'
 import TextInputField from '../common/TextInputField'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { removeError } from '../redux/actions/errorActions'
 
-const SignIn = ({ onSignIn }) => {
+const SignIn = ({ onSignIn, navigation }) => {
   const dispatch = useDispatch()
 
   const [email, setEmail] = useState('')
@@ -14,13 +14,12 @@ const SignIn = ({ onSignIn }) => {
   const [errors, setErrors] = useState({})
 
   const stateError = useSelector(state => state.error)
-
   useEffect(() => {
     setErrors(stateError)
   }, [stateError])
 
   const onChangeField = (fieldName, stateChange, value) => {
-    dispatch(removeError(fieldName))
+    if (errors[fieldName]) dispatch(removeError(fieldName))
     stateChange(value)
   }
 
@@ -45,6 +44,13 @@ const SignIn = ({ onSignIn }) => {
           <Button
             title='Submit'
             onPress={() => onSignIn({ email, password })}
+          />
+        </View>
+        <View style={styles.infoContainer}>
+          <Text>Do not have an account yet?</Text>
+          <Button
+            title='Sign Up'
+            onPress={() => navigation.push('SignUp')}
           />
         </View>
       </ScrollView>
@@ -79,6 +85,11 @@ const styles = StyleSheet.create({
   },
   inputFieldText: {
     fontSize: 30
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 

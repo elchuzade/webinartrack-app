@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import ScreenContainer from '../common/ScreenContainer'
 
+import { signUp } from '../redux/actions/authActions'
 import SignUp from '../components/SignUp'
 
 const SignUpScreen = props => {
   const dispatch = useDispatch()
 
-  // const { user } = props.route.params
-
-  const user = {
-    name: 'Kamran',
-    email: 'elchuzade@gmail.com'
-  }
+  const onSignUp = useCallback((user) => {
+    dispatch(signUp(user))
+  }, [dispatch])
 
   return (
     <ScreenContainer>
-      {/* <SignUp user={user} /> */}
-      <SignUp />
+      <SignUp onSignUp={onSignUp} navigation={props.navigation} />
     </ScreenContainer>
   )
 }

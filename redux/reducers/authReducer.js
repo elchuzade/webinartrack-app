@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
-        isAuthenticated: true
+        isAuthenticated: !isEmpty(action.payload),
       }
     default:
       return state

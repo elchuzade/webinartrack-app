@@ -6,7 +6,7 @@ import ScreenContainer from '../common/ScreenContainer'
 import { signIn } from '../redux/actions/authActions'
 import SignIn from '../components/SignIn'
 
-const SignInScreen = () => {
+const SignInScreen = props => {
   const dispatch = useDispatch()
 
   const onSignIn = useCallback((user) => {
@@ -15,7 +15,7 @@ const SignInScreen = () => {
 
   return (
     <ScreenContainer>
-      <SignIn onSignIn={onSignIn} />
+      <SignIn onSignIn={onSignIn} navigation={props.navigation} />
     </ScreenContainer>
   )
 }
